@@ -1,0 +1,39 @@
+/*
+ * $Id: cxx_instance.cxx,v 1.2 2008/07/09 19:37:00 tyreld Exp $
+ *
+ * (C) Copyright IBM Corp. 2006, 2008
+ *
+ * THIS FILE IS PROVIDED UNDER THE TERMS OF THE ECLIPSE PUBLIC LICENSE 
+ * ("AGREEMENT"). ANY USE, REPRODUCTION OR DISTRIBUTION OF THIS FILE 
+ * CONSTITUTES RECIPIENTS ACCEPTANCE OF THE AGREEMENT.
+ *
+ * You can obtain a current copy of the Eclipse Public License from
+ * http://www.opensource.org/licenses/eclipse-1.0.php
+ *
+ * Author:       Viktor Mihajlovski <mihajlov@de.ibm.com>
+ *
+ * Interface Type : Common Manageability Programming Interface ( CMPI )
+ *
+ * Description: Test Provider
+ * 
+ * Warning: This is nonsense code, just for compile/link tests
+ */
+
+#include <CmpiInstanceMI.h>
+
+class CXX_InstanceTestProviderClass : public CmpiInstanceMI
+{
+public:
+  CXX_InstanceTestProviderClass(const CmpiBroker &b, const CmpiContext &c); 
+};
+
+CXX_InstanceTestProviderClass::CXX_InstanceTestProviderClass(const CmpiBroker &b, 
+							     const CmpiContext &c)
+  : CmpiBaseMI(b,c), CmpiInstanceMI(b,c)
+{
+}
+
+CMProviderBase(CXX_InstanceTestProvider);
+
+CMInstanceMIFactory(CXX_InstanceTestProviderClass,CXX_InstanceTestProvider);
+

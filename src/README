@@ -1,0 +1,35 @@
+SBLIM CMPI Development Package
+==============================
+
+The purpose of this package is to provide a standalone development kit
+for CMPI providers. It contains the CMPI header files needed for compilation
+of CMPI providers written in the C programming language.
+
+It also contains the so-called CMPI C++ Wrapper, consisting of C++ header
+files and a shared library implementing the C++ support.
+
+You can find the CMPI documentation on the following website
+http://www.opengroup.org/bookstore/catalog/c051.htm
+
+Depending on the way you configure the package, the header files go to
+/usr/include/cmpi or /usr/local/include/cmpi
+while the C++ shared library goes to 
+/usr/lib or /usr/local/lib 
+
+We recommend the /usr/local prefix for testing purposes only
+
+CMPI 1.0 and existing providers
+===============================
+
+If you plan to build CMPI providers written before release 1.0.0 availability
+add "#define CMPI_VERSION 90" to the provider source or compile with 
+-DCMPI_VERSION=90 option.
+
+C++ Wrappers after 1.0.2
+========================
+
+Due to an incorrect definition in cmpidt.h up to cmpi-devel 1.0.2 the UINT32
+and SINT32 types were incorrectly defined as long ints.
+While this doesn't impact binary compatibility on 32-bit platforms, the C++
+wrapper is affected. It's necessary to recompile CMPI C++ providers with
+cmpi-devel 1.0.3 or higher.

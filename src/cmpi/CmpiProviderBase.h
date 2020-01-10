@@ -1,0 +1,58 @@
+/*
+ *
+ * $Id: CmpiProviderBase.h,v 1.3 2008/07/09 19:36:59 tyreld Exp $
+ *
+ * (C) Copyright IBM Corp. 2003, 2005, 2008
+ *
+ * THIS FILE IS PROVIDED UNDER THE TERMS OF THE ECLIPSE PUBLIC LICENSE
+ * ("AGREEMENT"). ANY USE, REPRODUCTION OR DISTRIBUTION OF THIS FILE
+ * CONSTITUTES RECIPIENTS ACCEPTANCE OF THE AGREEMENT.
+ *
+ * You can obtain a current copy of the Eclipse Public License from
+ * http://www.opensource.org/licenses/eclipse-1.0.txt
+ *
+ * Author:        Adrian Schuur <schuur@de.ibm.com>
+ * Contributors:  Heidi Neumann, heidineu@de.ibm.com
+ *                Angel Nunez Mencias, anunez@de.ibm.com
+ *                Viktor Mihajlovski, mihajlov@de.ibm.com
+ *
+ * Description: CMPI ProviderBase Helper Definitions
+ *
+ */
+
+#ifndef _CmpiProviderBase_h_
+#define _CmpiProviderBase_h_
+
+#include "Linkage.h"
+
+class CmpiBaseMI;
+
+class CMPI_PROVIDER_LINKAGE CmpiProviderBase {
+public:
+   CmpiProviderBase();
+   ~CmpiProviderBase();
+   CmpiBaseMI* getBaseMI();
+   void setBaseMI(CmpiBaseMI* aBaseMI);
+   void incUseCount();
+   int decUseCount();
+private:
+   friend class CmpiArgs;
+   friend class CmpiArray;
+   friend class CmpiDateTime;
+   friend class CmpiInstance;
+   friend class CmpiObject;
+   friend class CmpiObjectPath;
+   friend class CmpiStatus;
+   friend class CmpiString;
+   friend class CmpiBaseMI;
+   // per provider CmpiBaseMI
+   CmpiBaseMI* baseMI;
+   int useCount;
+   // only for usage inside CMPI CPP library
+   static CMPIBroker *getBroker();
+   static void setBroker(const CMPIBroker *mb);
+};
+
+#endif
+
+

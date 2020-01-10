@@ -1,0 +1,64 @@
+#
+# sblim-cmpi-devel.spec
+#
+# Package spec for cmpi-devel
+#
+
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+Summary: SBLIM CMPI Provider Development Support
+Name: sblim-cmpi-devel
+Version: 2.0.1
+Release: 0
+Group: Systems Management/Base
+URL: http://www.sblim.org
+License: EPL
+
+Provides: cmpi-devel
+Conflicts: tog-pegasus-devel
+
+Source0: http://prdownloads.sourceforge.net/sblim/%{name}-%{version}.tar.bz2
+
+%Description
+This packages provides the CMPI header files needed by provider developers
+and can be used standalone.
+
+%prep
+
+%setup -T -b 0 -n %{name}-%{version}
+
+%build
+
+%configure
+make %{?_smp_mflags}
+
+%install
+[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT 
+
+make DESTDIR=$RPM_BUILD_ROOT install
+
+# remove unused libtool files
+rm -f $RPM_BUILD_ROOT/%{_libdir}/*a
+
+%clean
+[ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT 
+
+%files
+%defattr(-,root,root)
+%doc %{_datadir}/doc/%{name}-%{version}
+%{_includedir}/cmpi
+%{_libdir}/*.so*
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%changelog
+* Wed Jul 09 2008 Tyrel Datwyler <tyreld@us.ibm.com> 1.0.5-0
+  - Changed license from CPL to EPL
+
+* Thu Feb 09 2006 Viktor Mihajlovski <mihajlov@de.ibm.com> 1.0.4-0
+  - Make tog-pegasus-devel a conflicting package
+
+* Thu Jul 28 2005 Viktor Mihajlovski <mihajlov@de.ibm.com> 1.0.1-0
+  - Updates for rpmlint complaints
