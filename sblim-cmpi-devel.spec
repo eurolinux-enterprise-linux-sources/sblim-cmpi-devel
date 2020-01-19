@@ -1,7 +1,7 @@
 
 Name:           sblim-cmpi-devel
 Version:        2.0.3
-Release:        3%{?dist}
+Release:        5%{?dist}
 Summary:        SBLIM CMPI Provider Development Support
 
 Group:          Development/Libraries
@@ -56,6 +56,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libcmpiCppImpl.so*
 
 %changelog
+* Fri Jan 24 2014 Daniel Mach <dmach@redhat.com> - 2.0.3-5
+- Mass rebuild 2014-01-24
+
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.0.3-4
+- Mass rebuild 2013-12-27
+
 * Thu Jul 25 2013 Vitezslav Crhonek <vcrhonek@redhat.com> - 2.0.3-3
 - Fix libcmpiCppImpl0 Conflicts
   Resolves: #980252
