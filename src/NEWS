@@ -1,0 +1,86 @@
+Changes in 2.0.3
+================
+
+Bugs Fixed:
+- 3531598 several CmpiObjectPath methods leak memory
+- 3531599 replace CMGetCharPtr with CMGetCharsPtr
+- 3531597 returnData with char type fails
+- 3531596 CmpiData uses wrong union for unsigned data
+
+New Features:
+- 3531601 add CmpiString constructor for char data
+- 3531603 no way to determine internal type of CmpiData (add getType function)
+
+Changes in 2.0.2
+================
+
+Bugs Fixed:
+- 2817255 CmpiData constructor for CmpiString argument produce garbage
+- 3005546 cmpi thread key typed defined wrong on s390x
+
+Changes in 2.0.1
+=================
+
+Bugs fixed:
+- 2662011 Fixed cmpi-devel references unknown setInstance
+- 2662075 Fixed CBGetClassification references non-existing brokerClassification
+- 2688794 Fixed typo in cmpidt.h
+
+Changes in 2.0.0
+==================
+
+New Features:
+- 1702153 enablement for CMPI 2.0 standard
+
+Changes in 1.0.6
+==================
+
+Bugs fixed:
+- 2128836 Fixed C++ IndicationMI out of line with cmpift.h
+- 2508518 Fixed Indication function table out of line with spec
+
+Changes in 1.0.5
+===================
+
+New Features:
+- 2014066 changed licensing from CPL to EPL
+
+Bugs fixed:
+- 1888906 Fixed Typo in cmpi-devel's cmpimacs.h for CMSetObjectPath macro
+- 1954980 Fixed Wrong type for _CMPIBroker.brokerCapabilities
+
+Changes in 1.0.4
+================
+
+New Features:
+- Added rudimentary set of test providers for compile/link verification.
+
+Bugs fixed:
+- 1420604 Fixed (again) Compatibility Problem with C++ providers.
+- 1428205 generic RPM implicitly conflicts with tog-pegasus-devel
+
+Changes in 1.0.3
+================
+
+Bugs fixed:
+- 1420604 Fixed CMPI 1.0 compliance issues in C and C++ header files.
+
+Changes in 1.0.2
+================
+
+Bugs fixed:
+- 1236584 Fixed some rpmlint warnings in the spec file.
+
+Changes in 1.0.1
+================
+
+Bugs fixed:
+- 1201389 Fixed CMPI C++ Providers Build Break
+
+Changes in 1.0.0
+================
+
+Release 1.0.0 is now implementing the function signatures as required
+by the Open Group spec. CMPI providers written before 1.0.0 will require
+that the macro CMPI_VERSION is set to 90 (or some other valid release id) in
+order to build.
